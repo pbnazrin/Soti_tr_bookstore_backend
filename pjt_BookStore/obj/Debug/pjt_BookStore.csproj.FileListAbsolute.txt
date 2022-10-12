@@ -65,3 +65,6 @@ C:\Users\npb\Desktop\FSD\final_project1\pjt_BookStore\pjt_BookStore\obj\Debug\pj
 C:\Users\npb\Desktop\FSD\final_project1\pjt_BookStore\pjt_BookStore\obj\Debug\pjt_BookStore.csproj.CopyComplete
 C:\Users\npb\Desktop\FSD\final_project1\pjt_BookStore\pjt_BookStore\obj\Debug\pjt_BookStore.dll
 C:\Users\npb\Desktop\FSD\final_project1\pjt_BookStore\pjt_BookStore\obj\Debug\pjt_BookStore.pdb
+C:\Users\npb\Desktop\FSD\final_project1\pjt_BookStore\pjt_BookStore\bin\System.Web.Cors.dll
+C:\Users\npb\Desktop\FSD\final_project1\pjt_BookStore\pjt_BookStore\bin\System.Web.Http.Cors.dll
+C:\Users\npb\Desktop\FSD\final_project1\pjt_BookStore\pjt_BookStore\bin\System.Web.Http.Cors.xml

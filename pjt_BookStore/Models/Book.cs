@@ -12,6 +12,7 @@ namespace pjt_BookStore.Models
         public int CategoryId { get; set; }
 
         public string Title{ get; set; }
+        public string Author { get; set; }
         public int ISBN { get; set; }
         public int Year { get; set; }
         public float Price { get; set; }
@@ -25,12 +26,13 @@ namespace pjt_BookStore.Models
         {
 
         }
-        public Book(int bookId , int categoryId,string title,int isbn,int year,float price,
+        public Book(int bookId , int categoryId,string title,string author,int isbn,int year,float price,
 string description,int position,int status ,string image)
         {
             BookId = bookId;
             CategoryId = categoryId;
             Title = title;
+            Author = author;
             ISBN = isbn;
             Year = year;
             Price = price;

@@ -22,6 +22,7 @@ namespace pjt_BookStore.Controllers
             return Ok(data);
         }
         [HttpGet]
+        [Route("Get")]
         public IHttpActionResult Get(int id)
         {
             var data = repository.GetUsersById(id);
@@ -35,12 +36,22 @@ namespace pjt_BookStore.Controllers
             }
         }
         [HttpPost]
-        public IHttpActionResult Post(Users users)
+        //[Route("Register")]
+        public IHttpActionResult Register([FromBody] Users users)
         {
             var data = repository.AddUser(users);
             return Ok(data);
             
         }
+
+        //[HttpPost]
+        //[Route("Login/{users}")]
+        //public IHttpActionResult Login([FromBody] Users users)
+        //{
+        //    var data = repository.AddUser(users);
+        //    return Ok(data);
+
+        //}
 
         [HttpDelete]
         public IHttpActionResult Delete(int id)

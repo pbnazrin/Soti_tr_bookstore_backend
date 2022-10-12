@@ -19,7 +19,7 @@ namespace pjt_BookStore.Models
 
         Users IUserRepository.AddUser(Users users)
         {
-            comm.CommandText = $"insert into Users values({users.UserId},'{users.Username}','{users.Password}','{users.Name}','{users.Email}',{users.Phone},'{users.Address}')";
+            comm.CommandText = $"insert into Users values('{users.Username}','{users.Password}','{users.Name}','{users.Email}','{users.Phone}','{users.Address}')";
             comm.Connection = conn;
             conn.Open();
             int row = comm.ExecuteNonQuery();
@@ -57,7 +57,7 @@ namespace pjt_BookStore.Models
                 string pwd = reader["Password"].ToString();
                 string name = reader["Name"].ToString();
                 string email = reader["Email"].ToString();
-                int    phone = Convert.ToInt32(reader["Phone"]);
+                string  phone = reader["Phone"].ToString();
                 string address = reader["Address"].ToString();
                 list.Add(new Users(userid, uname, pwd, name, email, phone, address));
             }
@@ -79,7 +79,7 @@ namespace pjt_BookStore.Models
                 string pwd = reader["Password"].ToString();
                 string name = reader["Name"].ToString();
                 string email = reader["Email"].ToString();
-                int phone = Convert.ToInt32(reader["Phone"]);
+                string phone = reader["Phone"].ToString();
                 string address = reader["Address"].ToString();
                 users = new Users(userid, uname, pwd, name, email, phone, address);
 
@@ -91,11 +91,41 @@ namespace pjt_BookStore.Models
         void IUserRepository.UpdateUsers(Users users)
         {
             comm.CommandText = $"Update Users set Username='{users.Username}',Password='{users.Username}',Name = '{users.Name}',Email='{users.Email}'," +
-                $"Phone={users.Phone},Address='{users.Address}' where UserId ="+users.UserId;
+                $"'Phone={users.Phone}',Address='{users.Address}' where UserId ={users.UserId}')";
             comm.Connection = conn;
             conn.Open();
             int row = comm.ExecuteNonQuery();
             conn.Close();
         }
+
+        void IUserRepository.AddToWishList(int userId, int bookId)
+        {
+            comm.CommandText = $"insert into WishList values({userId},{bookId}";
+            comm.Connection = conn;
+            conn.Open();
+            int row = comm.ExecuteNonQuery();
+            conn.Close();
+            
+        }
+        List<WishList> IUserRepository.ViewWishList(int userid)
+        {
+            List<WishList> list = new List<WishList>();
+            comm.CommandText = "select * from WishList";
+            comm.Connection = conn;
+            conn.Open();
+            SqlDataReader reader = comm.ExecuteReader();
+            while (reader.Read())
+            {
+                int wishId= Convert.ToInt32(reader["WishListId"]);
+                int userId = Convert.ToInt32(reader["UserId"]);
+                
+                int bookId = Convert.ToInt32(reader["Phone"]);
+                
+                list.Add(new WishList(wishId, userId, bookId));
+            }
+            conn.Close();
+            return list;
+        }
+
     }
 }

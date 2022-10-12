@@ -20,36 +20,18 @@ namespace pjt_BookStore.Models
         public List<Category> GetAllCategory()
         {
             List<Category> list = new List<Category>();
-            comm.CommandText = "select * from category";
+            comm.CommandText = "select * from  category  where status = 1 order by position;";
             comm.Connection = conn;
             conn.Open();
             SqlDataReader reader = comm.ExecuteReader();
-            //while (reader.Read())
-            //{
-            //    Category category =
-            //        new Category()
-            //        {
-            //            Id = Convert.ToInt32(reader["CategoryId"]),
-            //            CatName = reader["CategoryName"]?.ToString(),
-            //            CatDesc = reader["Description"]?.ToString(),
-            //            Img = reader["Image"]?.ToString()
-
-            //        };
-            //    bool? status;
-            //    Boolean.TryParse(reader["Status"]?.ToString(), out status);
-            //            Position = Convert.ToInt32(reader["Position"]),
-            //            CreatedAt = reader["CreatedAt"].ToString()
-            //    list.Add(category);
-            //}
-            //conn.Close();
-            //return list;
+            
             while (reader.Read())
             {
                 int id = Convert.ToInt32(reader["CategoryId"]);
                 string catName = reader["CategoryName"].ToString();
                 string catDesc = reader["Description"].ToString();
                 string img = reader["Image"].ToString();
-                int status = Convert.ToInt32(reader["CategoryId"]);
+                int status = Convert.ToInt32(reader["Status"]);
                 int position = Convert.ToInt32(reader["Position"]);
                 DateTime createdAt = Convert.ToDateTime(reader["CreatedAt"]);
                 list.Add(new Category(id,catName,catDesc,img,status,position,createdAt));

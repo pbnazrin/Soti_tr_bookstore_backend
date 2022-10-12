@@ -9,9 +9,9 @@ namespace pjt_BookStore.Models
     internal interface IOrderItemsRepository
     {
         List<OrderItems> GetAllOrderItems();
-        OrderItems GetOrderItemsByID(int id);
-        OrderItems AddOrderItems(OrderItems items);
-        void DeleteOrderItems(int id);
-        void UpdateOrderItems(OrderItems items);
+        List<OrderItems> GetOrderItemsByID(int id);
+        OrderItems AddOrderItems(int userid,OrderItems items);
+        void DeleteOrderItems(int userid,int bookid);
+        //void UpdateOrderItems(OrderItems items);
     }
 }

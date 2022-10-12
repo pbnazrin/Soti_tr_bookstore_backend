@@ -15,5 +15,9 @@ namespace pjt_BookStore.Models
         void DeleteUsers(int id);
         void UpdateUsers ( Users users );
 
+        void AddToWishList(int uid, int bik);
+        List<WishList> ViewWishList(int uid);
+        
+
     }
 }

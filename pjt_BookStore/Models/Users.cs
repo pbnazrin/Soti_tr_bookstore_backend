@@ -11,7 +11,7 @@ namespace pjt_BookStore.Models
         public string Password { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public int    Phone { get; set; }
+        public string  Phone { get; set; }
         public string Address { get; set; }
 
         public Users()
@@ -19,7 +19,7 @@ namespace pjt_BookStore.Models
 
         }
 
-        public Users(int userId, string username, string password, string name, string email, int phone, string address)
+        public Users(int userId, string username, string password, string name, string email, string phone, string address)
         {
             UserId = userId;
             Username = username;

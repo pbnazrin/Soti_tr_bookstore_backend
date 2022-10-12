@@ -7,25 +7,43 @@ namespace pjt_BookStore.Models
 {
     public class OrderItems
     {
-        public int ItemId { get; set; }
-        public int OrderId { get; set; }
+        public int CartId { get; set; }
+        public int UserId { get; set; }
         public int BookId { get; set; }
-        public int BookPrice { get; set; }
-     
+
+        public int CategoryId { get; set; }
+
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public int ISBN { get; set; }
+        public int Year { get; set; }
+        public float Price { get; set; }
+        public string Description { get; set; }
+        public int Position { get; set; }
+
+        public int Status { get; set; }
+        public string Image { get; set; }
 
         public OrderItems()
         {
 
         }
-
-        public OrderItems(int itemId,int orderId,int bookId,int bookPrice)
+        public OrderItems(int orderId,int userId,int bookId, int categoryId, string title, string author, int isbn, int year, float price,
+string description, int position, int status, string image)
         {
-            ItemId = itemId;
-            OrderId = orderId;
+            CartId = orderId;
+            UserId = userId;
             BookId = bookId;
-            BookPrice = bookPrice;
-          
-
+            CategoryId = categoryId;
+            Title = title;
+            Author = author;
+            ISBN = isbn;
+            Year = year;
+            Price = price;
+            Description = description;
+            Position = position;
+            Status = status;
+            Image = image;
         }
     }
 }

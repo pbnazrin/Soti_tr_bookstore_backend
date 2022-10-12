@@ -18,27 +18,34 @@ namespace pjt_BookStore.Models
             comm = new SqlCommand();
         }
 
-        public int GetLogin(Login login)
+        public Users GetLogin(Login login)
         {
-            comm.CommandText = "select * from Users where Username = '" + login.Username + "' and Password = '" + login.Password + "'";
+            Users users = new Users();
+            comm.CommandText = "select * from Users where Email = '" + login.Email + "' and Password = '" + login.Password + "'";
             comm.Connection = conn;
             conn.Open();
             SqlDataReader reader = comm.ExecuteReader();
-            //while (reader.Read())
-            //{
-
-            //}
-            //conn.Close();
-            if (reader.HasRows != false)
+            while (reader.Read())
             {
-                return 1;
-
-            }
-            else
-            {
-                return 0;
+                int userid = Convert.ToInt32(reader["UserId"]);
+                string uname = reader["Username"].ToString();
+                string pwd = reader["Password"].ToString();
+                string name = reader["Name"].ToString();
+                string email = reader["Email"].ToString();
+                string phone = reader["Phone"].ToString();
+                string address = reader["Address"].ToString();
+                users = new Users(userid, uname, pwd, name, email, phone, address);
             }
             
+            if (reader.HasRows != false)
+            {
+                conn.Close();
+                return users;
+
+            }
+            conn.Close();
+            return users;
+          
             
         
         

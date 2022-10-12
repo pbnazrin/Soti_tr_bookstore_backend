@@ -15,6 +15,7 @@ namespace pjt_BookStore.Controllers
         {
             repository = new OrderItemsSqlImpl();
         }
+
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -23,9 +24,10 @@ namespace pjt_BookStore.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        [Route("api/OrderItems/{userid}")]
+        public IHttpActionResult Get(int userid)
         {
-            var data = repository.GetOrderItemsByID(id);
+            var data = repository.GetOrderItemsByID(userid);
             if (data == null)
             {
                 return NotFound();
@@ -37,26 +39,28 @@ namespace pjt_BookStore.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Post(OrderItems items)
+        [Route("api/OrderItems")]
+        public IHttpActionResult Post(int userid,OrderItems items)
         {
-            var data = repository.AddOrderItems(items);
+            var data = repository.AddOrderItems(userid,items);
 
             return Ok(data);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        [Route("api/OrderItems/{userid}/{bookid}")]
+        public IHttpActionResult Delete(int userid,int bookid)
 
         {
-            repository.DeleteOrderItems(id);
+            repository.DeleteOrderItems(userid,bookid);
             return Ok();
         }
 
-        [HttpPut]
-        public IHttpActionResult Put(OrderItems items)
-        {
-            repository.UpdateOrderItems(items);
-            return Ok();
-        }
+        //[HttpPut]
+        //public IHttpActionResult Put(OrderItems items)
+        //{
+        //    repository.UpdateOrderItems(items);
+        //    return Ok();
+        //}
     }
 }

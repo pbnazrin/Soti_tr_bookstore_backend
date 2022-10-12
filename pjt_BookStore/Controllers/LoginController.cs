@@ -16,10 +16,10 @@ namespace pjt_BookStore.Controllers
         {
             repository = new LoginImpl();
         }
-        [HttpGet]
-        public IHttpActionResult Get(Login login)
+        [HttpPost]
+        public IHttpActionResult Post(Login login)
         {
-            int data = repository.GetLogin(login);
+            var data = repository.GetLogin(login);
             return Ok(data);
 
         }

@@ -14,5 +14,16 @@ namespace pjt_BookStore.Models
         void DeleteBook(int id);
         void UpdateBook(Book book);
 
+        List<Book> GetBookByCatID(int catid);
+
+        List<Book> GetBookByTitle(string btitle);
+        List<Book> GetBookByAuthor(string bauthor);
+        List<Book> GetBookByISBN(int bisbn);
+        List<Book> GetBookByCategory(string bcat);
+
+        List<Book> GetBestBooks();
+
+
+
     }
 }
